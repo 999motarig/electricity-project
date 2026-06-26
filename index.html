@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>نظام مشروع العقد الموحد للكهرباء</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="القائمة الرئيسية">
+      <div class="brand">
+        <span class="brand__mark">⚡</span>
+        <div>
+          <strong>كهرباء العقد الموحد</strong>
+          <small>منصة إدارة المشاريع</small>
+        </div>
+      </div>
+
+      <nav class="nav-list">
+        <a class="nav-link active" href="#dashboard">لوحة التحكم</a>
+        <a class="nav-link" href="#archive">الأرشيف</a>
+        <a class="nav-link" href="#technical-office">المكتب الفني</a>
+        <a class="nav-link" href="#work-orders">أوامر العمل</a>
+        <a class="nav-link" href="#projects">المشاريع</a>
+      </nav>
+
+      <div class="sidebar-card">
+        <span>نسبة الإنجاز العامة</span>
+        <strong>78%</strong>
+        <div class="mini-progress"><span style="width:78%"></span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">لوحة تشغيل مباشرة</p>
+          <h1>نظام متابعة مشروع العقد الموحد</h1>
+          <p class="subtitle">متابعة مركزية للأرشيف، المكتب الفني، أوامر العمل، المشاريع، ولوحة مؤشرات تنفيذية.</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="ghost-button" id="themeToggle" type="button">تبديل المظهر</button>
+          <button class="primary-button" type="button">+ أمر عمل جديد</button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="hero-grid">
+        <article class="hero-card">
+          <div class="hero-card__content">
+            <span class="status-pill">محدث الآن</span>
+            <h2>نظرة شاملة على الأداء التشغيلي</h2>
+            <p>راقب الطلبات المفتوحة، المخططات قيد المراجعة، المشاريع المتأخرة، وإنتاجية مدخلي البيانات من مكان واحد.</p>
+          </div>
+          <div class="hero-meter" aria-label="مؤشر الإنجاز">
+            <span>86%</span>
+            <small>التزام الخطة</small>
+          </div>
+        </article>
+
+        <article class="alert-card">
+          <h3>تنبيهات مهمة</h3>
+          <ul>
+            <li>7 أوامر عمل لم تحدث منذ 48 ساعة.</li>
+            <li>3 مخططات بانتظار اعتماد مهندس الكهرباء.</li>
+            <li>مشروعان تجاوزا تاريخ التسليم المتوقع.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="stats-grid" aria-label="مؤشرات الأقسام الخمسة">
+        <article class="stat-card" data-count="128">
+          <span class="stat-icon">📊</span>
+          <small>لوحة التحكم</small>
+          <strong>128</strong>
+          <p>مؤشر وطلب نشط</p>
+        </article>
+        <article class="stat-card" data-count="342">
+          <span class="stat-icon">🗂️</span>
+          <small>الأرشيف</small>
+          <strong>342</strong>
+          <p>طلب ومشروع محفوظ</p>
+        </article>
+        <article class="stat-card" data-count="56">
+          <span class="stat-icon">🧭</span>
+          <small>المكتب الفني</small>
+          <strong>56</strong>
+          <p>مخطط قيد المراجعة</p>
+        </article>
+        <article class="stat-card" data-count="74">
+          <span class="stat-icon">🧾</span>
+          <small>أوامر العمل</small>
+          <strong>74</strong>
+          <p>أمر عمل مفتوح</p>
+        </article>
+        <article class="stat-card" data-count="18">
+          <span class="stat-icon">🏗️</span>
+          <small>المشاريع</small>
+          <strong>18</strong>
+          <p>مشروع تحت التنفيذ</p>
+        </article>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="section-panel" id="archive">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">قسم الأرشيف</p>
+              <h2>طلبات أوامر العمل والمشاريع</h2>
+            </div>
+            <input class="search-input" id="archiveSearch" type="search" placeholder="ابحث برقم الطلب أو المنطقة...">
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>رقم الطلب</th>
+                  <th>القسم</th>
+                  <th>المنطقة</th>
+                  <th>الحالة</th>
+                  <th>المسؤول</th>
+                </tr>
+              </thead>
+              <tbody id="archiveTable">
+                <tr><td>WO-1042</td><td>أمر عمل</td><td>الرياض</td><td><span class="badge in-review">قيد المراجعة</span></td><td>مدخل بيانات 1</td></tr>
+                <tr><td>PR-221</td><td>مشروع</td><td>جدة</td><td><span class="badge approved">معتمد</span></td><td>مدير المشروع</td></tr>
+                <tr><td>WO-1037</td><td>أمر عمل</td><td>الدمام</td><td><span class="badge delayed">متأخر</span></td><td>مهندس الكهرباء</td></tr>
+                <tr><td>PR-214</td><td>مشروع</td><td>مكة</td><td><span class="badge archived">مؤرشف</span></td><td>الأرشيف</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section-panel" id="technical-office">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">قسم المكتب الفني</p>
+              <h2>المخططات الكهربائية</h2>
+            </div>
+            <button class="ghost-button" type="button">رفع مخطط</button>
+          </div>
+          <div class="drawing-list">
+            <article>
+              <span>SLD-05</span>
+              <strong>مخطط أحادي الخط - محطة فرعية</strong>
+              <small>الإصدار 3 · بانتظار الاعتماد</small>
+            </article>
+            <article>
+              <span>CAB-12</span>
+              <strong>مسار كابلات الجهد المتوسط</strong>
+              <small>الإصدار 1 · تمت المراجعة</small>
+            </article>
+            <article>
+              <span>LOAD-09</span>
+              <strong>حساب الأحمال الكهربائية</strong>
+              <small>الإصدار 2 · يحتاج تعديل</small>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cards-grid">
+        <article class="section-panel" id="work-orders">
+          <p class="eyebrow">إدارة أوامر العمل</p>
+          <h2>توزيع الحالات</h2>
+          <div class="progress-row"><span>جديد</span><div><i style="width:42%"></i></div><b>31</b></div>
+          <div class="progress-row"><span>قيد التنفيذ</span><div><i style="width:76%"></i></div><b>56</b></div>
+          <div class="progress-row"><span>مكتمل</span><div><i style="width:58%"></i></div><b>43</b></div>
+        </article>
+
+        <article class="section-panel" id="projects">
+          <p class="eyebrow">إدارة المشاريع</p>
+          <h2>مشاريع ذات أولوية</h2>
+          <div class="project-card"><strong>توسعة شبكة شمال الرياض</strong><span>82%</span></div>
+          <div class="project-card"><strong>تغذية مخطط سكني جديد</strong><span>64%</span></div>
+          <div class="project-card"><strong>تحسين موثوقية مغذيات جدة</strong><span>91%</span></div>
+        </article>
+
+        <article class="section-panel">
+          <p class="eyebrow">الصلاحيات</p>
+          <h2>وصول المستخدمين</h2>
+          <div class="role-chip">مدير المشروع: جميع الأقسام</div>
+          <div class="role-chip">مهندس الكهرباء: الأرشيف والمكتب الفني</div>
+          <div class="role-chip">مدخل البيانات: إدخال وتحديث الطلبات</div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
