@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>نظام إدارة مشاريع كهرباء العقد الموحد</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span>⚡</span><div><strong>العقد الموحد</strong><small>إدارة مشاريع الكهرباء</small></div></div>
+    <nav>
+      <a class="active" href="#dashboard">لوحة التحكم</a>
+      <a href="#manager">مدير المشروع</a>
+      <a href="#planning" data-department="الإنشاءات,الصيانة">التخطيط والإنشاءات</a>
+      <a href="#projects" data-department="المشاريع">المشاريع اليومية</a>
+      <a href="#users">المستخدمون والصلاحيات</a>
+      <a href="#reports" data-department="الإنشاءات,الصيانة,المشاريع">التقارير والملفات</a>
+    </nav>
+    <div class="login-card">
+      <small>الحساب الحالي</small>
+      <strong id="activeUser">لم يتم تسجيل الدخول</strong>
+      <p id="activeRole">يرجى تسجيل الدخول لتطبيق الصلاحيات</p>
+      <form id="loginForm" class="sidebar-login">
+        <input name="username" placeholder="اسم المستخدم" required>
+        <input name="password" type="password" placeholder="كلمة المرور" required>
+        <button>تسجيل الدخول</button>
+      </form>
+      <button id="logoutButton" class="logout" type="button">تسجيل الخروج</button>
+    </div>
+  </aside>
+
+  <main>
+    <header class="hero" id="dashboard">
+      <div>
+        <p class="eyebrow">نظام جديد من الصفر</p>
+        <h1>نظام إدارة مشاريع كهرباء العقد الموحد</h1>
+        <p>إدارة أوامر الإنشاءات والصيانة، المشاريع اليومية، الصور، ملفات PDF، المستخدمين والصلاحيات من لوحة واحدة.</p>
+      </div>
+      <button id="themeToggle">تبديل المظهر</button>
+    </header>
+
+    <section class="stats">
+      <article><span>👑</span><strong>مدير المشروع</strong><p>صلاحية كاملة</p></article>
+      <article><span>🏗️</span><strong id="constructionCount">0</strong><p>أوامر إنشاءات</p></article>
+      <article><span>🛠️</span><strong id="maintenanceCount">0</strong><p>أوامر صيانة</p></article>
+      <article><span>📅</span><strong id="projectCount">0</strong><p>مشاريع يومية</p></article>
+    </section>
+
+    <section class="panel" id="manager">
+      <div class="panel-head"><div><p class="eyebrow">1) قسم مدير المشروع</p><h2>حساب مدير المشروع وصلاحياته</h2></div><span class="pill success">صلاحية كاملة</span></div>
+      <div class="grid two">
+        <form id="managerForm" class="card">
+          <h3>بيانات حساب مدير المشروع</h3>
+          <label>اسم المستخدم<input id="managerUsername" value="manager" required></label>
+          <label>كلمة المرور<input id="managerPassword" type="password" value="123456" required></label>
+          <button>تغيير كلمة المرور / حفظ الحساب</button>
+          <p class="message" id="managerMessage">يمكن تغيير كلمة المرور في أي وقت.</p>
+        </form>
+        <div class="card permissions-list">
+          <h3>صلاحيات المدير</h3>
+          <ul>
+            <li>عرض وتعديل وحذف جميع أوامر العمل.</li>
+            <li>إضافة مستخدمين وتعديل كلمات المرور.</li>
+            <li>التحكم بصلاحيات الأقسام.</li>
+            <li>متابعة التقارير والصور والملفات.</li>
+            <li>الدخول لجميع أقسام النظام بدون قيود.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="planning">
+      <div class="panel-head"><div><p class="eyebrow">2) قسم التخطيط والإنشاءات</p><h2>أوامر عمل الإنشاءات والصيانة</h2></div><span class="pill">بحث وفلترة وملفات</span></div>
+      <div class="tabs">
+        <button class="tab active" data-tab="constructionTab">أوامر عمل الإنشاءات</button>
+        <button class="tab" data-tab="maintenanceTab">أوامر عمل الصيانة</button>
+      </div>
+
+      <div id="constructionTab" class="tab-panel active">
+        <form class="work-form" id="constructionForm">
+          <h3>إضافة أمر عمل إنشاءات</h3>
+          <label>رقم أمر العمل<input name="number" placeholder="CON-2026-001" required></label>
+          <label>نوع أمر العمل<input name="type" placeholder="تمديد كابلات / تركيب محول" required></label>
+          <label>تاريخ استلام الأمر من الكهرباء<input name="receiveDate" type="date" required></label>
+          <label>تاريخ التنفيذ<input name="executeDate" type="date" required></label>
+          <label>حالة الأمر<select name="status"><option>جديد</option><option>جاري التنفيذ</option><option>مكتمل</option></select></label>
+          <label>رفع صور التنفيذ<input name="images" type="file" accept="image/*" multiple></label>
+          <label>رفع ملف PDF لمخطط أمر العمل<input name="pdf" type="file" accept="application/pdf"></label>
+          <label class="wide">ملاحظات التنفيذ<textarea name="notes" rows="4" placeholder="اكتب ملاحظات التنفيذ..."></textarea></label>
+          <button>حفظ أمر الإنشاءات</button>
+        </form>
+        <div class="tools"><input id="constructionSearch" placeholder="البحث برقم الأمر"><input id="constructionDate" type="date"><button data-clear="construction">مسح الفلتر</button></div>
+        <div class="table-wrap"><table><thead><tr><th>رقم الأمر</th><th>النوع</th><th>الاستلام</th><th>التنفيذ</th><th>الحالة</th><th>PDF</th><th>الصور</th><th>إجراءات</th></tr></thead><tbody id="constructionTable"></tbody></table></div>
+      </div>
+
+      <div id="maintenanceTab" class="tab-panel">
+        <form class="work-form" id="maintenanceForm">
+          <h3>إضافة أمر عمل صيانة</h3>
+          <label>رقم أمر الصيانة<input name="number" placeholder="MNT-2026-001" required></label>
+          <label>نوع أمر العمل<input name="type" placeholder="صيانة وقائية / طارئة" required></label>
+          <label>تاريخ الاستلام من الكهرباء<input name="receiveDate" type="date" required></label>
+          <label>تاريخ التنفيذ<input name="executeDate" type="date" required></label>
+          <label>حالة الأمر<select name="status"><option>جديد</option><option>جاري التنفيذ</option><option>مكتمل</option></select></label>
+          <label>صور التنفيذ<input name="images" type="file" accept="image/*" multiple></label>
+          <label>ملف PDF للمخطط أو المستند<input name="pdf" type="file" accept="application/pdf"></label>
+          <label class="wide">تقرير الصيانة<textarea name="notes" rows="4" placeholder="اكتب تقرير الصيانة..."></textarea></label>
+          <button>حفظ أمر الصيانة</button>
+        </form>
+        <div class="tools"><input id="maintenanceSearch" placeholder="البحث برقم الأمر"><input id="maintenanceDate" type="date"><button data-clear="maintenance">مسح الفلتر</button></div>
+        <div class="table-wrap"><table><thead><tr><th>رقم الأمر</th><th>النوع</th><th>الاستلام</th><th>التنفيذ</th><th>الحالة</th><th>PDF</th><th>الصور</th><th>إجراءات</th></tr></thead><tbody id="maintenanceTable"></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="panel" id="projects">
+      <div class="panel-head"><div><p class="eyebrow">3) قسم المشاريع</p><h2>المشاريع اليومية وتقارير الأعمال</h2></div><span class="pill">تقرير لكل يوم</span></div>
+      <form id="projectForm" class="work-form">
+        <h3>إضافة مشروع / أمر عمل مشروع</h3>
+        <label>رقم أمر المشروع<input name="number" placeholder="PRJ-2026-001" required></label>
+        <label>نوع أمر عمل المشروع<input name="type" placeholder="تغذية موقع / توسعة شبكة" required></label>
+        <label>اسم المشروع<input name="name" placeholder="اسم المشروع" required></label>
+        <label>تاريخ بداية المشروع<input name="startDate" type="date" required></label>
+        <label>حالة المشروع<select name="status"><option>جديد</option><option>جاري التنفيذ</option><option>مكتمل</option></select></label>
+        <label>تاريخ اليوم<input name="dayDate" type="date" required></label>
+        <label>صور أعمال اليوم<input name="images" type="file" accept="image/*" multiple></label>
+        <label>نسبة الإنجاز<input name="progress" type="number" min="0" max="100" placeholder="0 - 100" required></label>
+        <label class="wide">تقرير مفصل للأعمال المنفذة<textarea name="report" rows="5" placeholder="مثال: تم تنفيذ تمديد الكابلات من النقطة A إلى النقطة B وتركيب عدد 5 قواعد..." required></textarea></label>
+        <label class="wide">ملاحظات<textarea name="notes" rows="3" placeholder="أي ملاحظات إضافية"></textarea></label>
+        <button>حفظ تقرير المشروع</button>
+      </form>
+      <div class="report-list" id="projectReports"></div>
+    </section>
+
+    <section class="panel" id="users">
+      <div class="panel-head"><div><p class="eyebrow">نظام المستخدمين والصلاحيات</p><h2>إضافة مستخدمين والتحكم بالصلاحيات</h2></div><span class="pill success">تحكم المدير</span></div>
+      <form id="userForm" class="work-form">
+        <h3>إضافة مستخدم</h3>
+        <label>اسم المستخدم<input name="username" required></label>
+        <label>كلمة مرور قابلة للتغيير<input name="password" type="password" required></label>
+        <label>الدور<select name="role"><option>admin</option><option>engineer</option><option>prohect Engineer</option></select></label>
+        <label class="checks wide">صلاحية الدخول
+          <span><input type="checkbox" name="perm" value="الإنشاءات"> الإنشاءات</span>
+          <span><input type="checkbox" name="perm" value="الصيانة"> الصيانة</span>
+          <span><input type="checkbox" name="perm" value="المشاريع"> المشاريع</span>
+          <span><input type="checkbox" name="perm" value="كل النظام"> كل النظام</span>
+        </label>
+        <button>إضافة المستخدم</button>
+      </form>
+      <div class="table-wrap"><table><thead><tr><th>اسم المستخدم</th><th>الدور</th><th>الصلاحيات</th><th>إجراء</th></tr></thead><tbody id="usersTable"></tbody></table></div>
+    </section>
+
+    <section class="panel" id="reports">
+      <div class="panel-head"><div><p class="eyebrow">التقارير والصور والملفات</p><h2>متابعة شاملة للملفات المرفوعة</h2></div></div>
+      <div class="files-grid" id="filesGrid"></div>
+    </section>
+  </main>
+
+  <dialog id="detailsDialog"><div id="detailsBody"></div><button onclick="detailsDialog.close()">إغلاق</button></dialog>
+  <script src="script.js"></script>
+</body>
+</html>
