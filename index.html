@@ -15,15 +15,21 @@
     <nav>
       <a class="active" href="#dashboard">لوحة التحكم</a>
       <a href="#manager">مدير المشروع</a>
-      <a href="#planning">التخطيط والإنشاءات</a>
-      <a href="#projects">المشاريع اليومية</a>
+      <a href="#planning" data-department="الإنشاءات,الصيانة">التخطيط والإنشاءات</a>
+      <a href="#projects" data-department="المشاريع">المشاريع اليومية</a>
       <a href="#users">المستخدمون والصلاحيات</a>
-      <a href="#reports">التقارير والملفات</a>
+      <a href="#reports" data-department="الإنشاءات,الصيانة,المشاريع">التقارير والملفات</a>
     </nav>
     <div class="login-card">
       <small>الحساب الحالي</small>
-      <strong id="activeUser">مدير المشروع</strong>
-      <p>صلاحية كاملة لكل النظام</p>
+      <strong id="activeUser">لم يتم تسجيل الدخول</strong>
+      <p id="activeRole">يرجى تسجيل الدخول لتطبيق الصلاحيات</p>
+      <form id="loginForm" class="sidebar-login">
+        <input name="username" placeholder="اسم المستخدم" required>
+        <input name="password" type="password" placeholder="كلمة المرور" required>
+        <button>تسجيل الدخول</button>
+      </form>
+      <button id="logoutButton" class="logout" type="button">تسجيل الخروج</button>
     </div>
   </aside>
 
@@ -134,7 +140,7 @@
         <h3>إضافة مستخدم</h3>
         <label>اسم المستخدم<input name="username" required></label>
         <label>كلمة مرور قابلة للتغيير<input name="password" type="password" required></label>
-        <label>نوع المستخدم<select name="role"><option>مستخدم قسم التخطيط والإنشاءات</option><option>مستخدم قسم المشاريع</option><option>صلاحية كاملة لكل النظام</option></select></label>
+        <label>الدور<select name="role"><option>admin</option><option>engineer</option><option>prohect Engineer</option></select></label>
         <label class="checks wide">صلاحية الدخول
           <span><input type="checkbox" name="perm" value="الإنشاءات"> الإنشاءات</span>
           <span><input type="checkbox" name="perm" value="الصيانة"> الصيانة</span>
