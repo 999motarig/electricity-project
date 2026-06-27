@@ -3,390 +3,156 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>نظام مشروع العقد الموحد للكهرباء</title>
+  <title>نظام إدارة مشاريع كهرباء العقد الموحد</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar" aria-label="القائمة الرئيسية">
-      <div class="brand">
-        <span class="brand__mark">⚡</span>
-        <div>
-          <strong>كهرباء العقد الموحد</strong>
-          <small>منصة إدارة المشاريع</small>
-        </div>
+  <aside class="sidebar">
+    <div class="brand"><span>⚡</span><div><strong>العقد الموحد</strong><small>إدارة مشاريع الكهرباء</small></div></div>
+    <nav>
+      <a class="active" href="#dashboard">لوحة التحكم</a>
+      <a href="#manager">مدير المشروع</a>
+      <a href="#planning">التخطيط والإنشاءات</a>
+      <a href="#projects">المشاريع اليومية</a>
+      <a href="#users">المستخدمون والصلاحيات</a>
+      <a href="#reports">التقارير والملفات</a>
+    </nav>
+    <div class="login-card">
+      <small>الحساب الحالي</small>
+      <strong id="activeUser">مدير المشروع</strong>
+      <p>صلاحية كاملة لكل النظام</p>
+    </div>
+  </aside>
+
+  <main>
+    <header class="hero" id="dashboard">
+      <div>
+        <p class="eyebrow">نظام جديد من الصفر</p>
+        <h1>نظام إدارة مشاريع كهرباء العقد الموحد</h1>
+        <p>إدارة أوامر الإنشاءات والصيانة، المشاريع اليومية، الصور، ملفات PDF، المستخدمين والصلاحيات من لوحة واحدة.</p>
       </div>
+      <button id="themeToggle">تبديل المظهر</button>
+    </header>
 
-      <nav class="nav-list">
-        <a class="nav-link active" href="#dashboard">لوحة التحكم</a>
- codex-qp0d9a
-        <a class="nav-link" href="#project-manager">مدير المشروع</a>
-        <a class="nav-link" href="#planning-construction">التخطيط والإنشاءات</a>
-        <a class="nav-link" href="#projects">المشاريع</a>
-        <a class="nav-link" href="#archive">الأرشيف</a>
-        <a class="nav-link" href="#technical-office">المكتب الفني</a>
+    <section class="stats">
+      <article><span>👑</span><strong>مدير المشروع</strong><p>صلاحية كاملة</p></article>
+      <article><span>🏗️</span><strong id="constructionCount">0</strong><p>أوامر إنشاءات</p></article>
+      <article><span>🛠️</span><strong id="maintenanceCount">0</strong><p>أوامر صيانة</p></article>
+      <article><span>📅</span><strong id="projectCount">0</strong><p>مشاريع يومية</p></article>
+    </section>
 
-        <a class="nav-link" href="#archive">الأرشيف</a>
-        <a class="nav-link" href="#technical-office">المكتب الفني</a>
-        <a class="nav-link" href="#work-orders">أوامر العمل</a>
-        <a class="nav-link" href="#projects">المشاريع</a>
- main
-      </nav>
-
-      <div class="sidebar-card">
-        <span>نسبة الإنجاز العامة</span>
-        <strong>78%</strong>
-        <div class="mini-progress"><span style="width:78%"></span></div>
-      </div>
-    </aside>
-
-    <main class="main-content">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">لوحة تشغيل مباشرة</p>
-          <h1>نظام متابعة مشروع العقد الموحد</h1>
- codex-qp0d9a
-          <p class="subtitle">إدارة صلاحيات مدير المشروع، التخطيط والإنشاءات، أوامر الصيانة، مشاريع التنفيذ اليومية، الأرشيف، والمكتب الفني.</p>
-        </div>
-        <div class="topbar-actions">
-          <button class="ghost-button" id="themeToggle" type="button">تبديل المظهر</button>
-          <a class="primary-button" href="#planning-construction">+ أمر عمل جديد</a>
-
-          <p class="subtitle">متابعة مركزية للأرشيف، المكتب الفني، أوامر العمل، المشاريع، ولوحة مؤشرات تنفيذية.</p>
-        </div>
-        <div class="topbar-actions">
-          <button class="ghost-button" id="themeToggle" type="button">تبديل المظهر</button>
-          <button class="primary-button" type="button">+ أمر عمل جديد</button>
- main
-        </div>
-      </header>
-
-      <section id="dashboard" class="hero-grid">
-        <article class="hero-card">
-          <div class="hero-card__content">
-            <span class="status-pill">محدث الآن</span>
-            <h2>نظرة شاملة على الأداء التشغيلي</h2>
- codex-qp0d9a
-            <p>راقب طلبات التخطيط والإنشاءات والصيانة، المخططات قيد المراجعة، تقارير المشاريع اليومية، وصلاحيات المستخدمين من مكان واحد.</p>
-
-            <p>راقب الطلبات المفتوحة، المخططات قيد المراجعة، المشاريع المتأخرة، وإنتاجية مدخلي البيانات من مكان واحد.</p>
- main
-          </div>
-          <div class="hero-meter" aria-label="مؤشر الإنجاز">
-            <span>86%</span>
-            <small>التزام الخطة</small>
-          </div>
-        </article>
-
-        <article class="alert-card">
-          <h3>تنبيهات مهمة</h3>
+    <section class="panel" id="manager">
+      <div class="panel-head"><div><p class="eyebrow">1) قسم مدير المشروع</p><h2>حساب مدير المشروع وصلاحياته</h2></div><span class="pill success">صلاحية كاملة</span></div>
+      <div class="grid two">
+        <form id="managerForm" class="card">
+          <h3>بيانات حساب مدير المشروع</h3>
+          <label>اسم المستخدم<input id="managerUsername" value="manager" required></label>
+          <label>كلمة المرور<input id="managerPassword" type="password" value="123456" required></label>
+          <button>تغيير كلمة المرور / حفظ الحساب</button>
+          <p class="message" id="managerMessage">يمكن تغيير كلمة المرور في أي وقت.</p>
+        </form>
+        <div class="card permissions-list">
+          <h3>صلاحيات المدير</h3>
           <ul>
- codex-qp0d9a
-            <li>7 أوامر عمل إنشاءات لم تحدث منذ 48 ساعة.</li>
-            <li>3 مخططات PDF بانتظار اعتماد المكتب الفني.</li>
-            <li>مشروعان يحتاجان تقرير أعمال اليوم.</li>
-
-            <li>7 أوامر عمل لم تحدث منذ 48 ساعة.</li>
-            <li>3 مخططات بانتظار اعتماد مهندس الكهرباء.</li>
-            <li>مشروعان تجاوزا تاريخ التسليم المتوقع.</li>
- main
+            <li>عرض وتعديل وحذف جميع أوامر العمل.</li>
+            <li>إضافة مستخدمين وتعديل كلمات المرور.</li>
+            <li>التحكم بصلاحيات الأقسام.</li>
+            <li>متابعة التقارير والصور والملفات.</li>
+            <li>الدخول لجميع أقسام النظام بدون قيود.</li>
           </ul>
-        </article>
-      </section>
-
- codex-qp0d9a
-      <section class="stats-grid" aria-label="مؤشرات الأقسام الرئيسية">
-        <article class="stat-card"><span class="stat-icon">👤</span><small>مدير المشروع</small><strong>كامل</strong><p>صلاحية لجميع الأقسام</p></article>
-        <article class="stat-card"><span class="stat-icon">🏗️</span><small>التخطيط والإنشاءات</small><strong>42</strong><p>أمر إنشاءات نشط</p></article>
-        <article class="stat-card"><span class="stat-icon">🛠️</span><small>الصيانة</small><strong>32</strong><p>أمر صيانة مفتوح</p></article>
-        <article class="stat-card"><span class="stat-icon">📋</span><small>المشاريع</small><strong>18</strong><p>مشروع تحت التنفيذ</p></article>
-        <article class="stat-card"><span class="stat-icon">🗂️</span><small>الأرشيف</small><strong>342</strong><p>طلب ومشروع محفوظ</p></article>
-      </section>
-
-      <section class="section-panel" id="project-manager">
-        <div class="panel-header">
-          <div>
-            <p class="eyebrow">قسم مدير المشروع</p>
-            <h2>صلاحية كاملة مع بيانات دخول قابلة للتغيير</h2>
-            <p class="subtitle">بيانات الدخول الافتراضية للتجربة: اسم المستخدم <strong>manager</strong> وكلمة السر <strong>123456</strong>.</p>
-          </div>
-          <span class="access-badge full">وصول لجميع الأقسام</span>
         </div>
+      </div>
+    </section>
 
-        <div class="auth-grid">
-          <form class="auth-card" id="managerLoginForm">
-            <h3>دخول مدير المشروع</h3>
-            <label>اسم المستخدم<input type="text" id="managerUsername" autocomplete="username" required></label>
-            <label>كلمة السر<input type="password" id="managerPassword" autocomplete="current-password" required></label>
-            <button class="primary-button" type="submit">تسجيل الدخول</button>
-            <p class="form-message" id="managerLoginMessage">لم يتم تسجيل الدخول بعد.</p>
-          </form>
+    <section class="panel" id="planning">
+      <div class="panel-head"><div><p class="eyebrow">2) قسم التخطيط والإنشاءات</p><h2>أوامر عمل الإنشاءات والصيانة</h2></div><span class="pill">بحث وفلترة وملفات</span></div>
+      <div class="tabs">
+        <button class="tab active" data-tab="constructionTab">أوامر عمل الإنشاءات</button>
+        <button class="tab" data-tab="maintenanceTab">أوامر عمل الصيانة</button>
+      </div>
 
-          <form class="auth-card" id="managerCredentialsForm">
-            <h3>تغيير اسم المستخدم وكلمة السر</h3>
-            <label>اسم المستخدم الجديد<input type="text" id="managerNewUsername" required></label>
-            <label>كلمة السر الجديدة<input type="password" id="managerNewPassword" minlength="4" required></label>
-            <button class="ghost-button" type="submit">حفظ بيانات مدير المشروع</button>
-            <p class="form-message" id="managerCredentialsMessage">يمكن تغيير البيانات في أي وقت.</p>
-          </form>
-        </div>
+      <div id="constructionTab" class="tab-panel active">
+        <form class="work-form" id="constructionForm">
+          <h3>إضافة أمر عمل إنشاءات</h3>
+          <label>رقم أمر العمل<input name="number" placeholder="CON-2026-001" required></label>
+          <label>نوع أمر العمل<input name="type" placeholder="تمديد كابلات / تركيب محول" required></label>
+          <label>تاريخ استلام الأمر من الكهرباء<input name="receiveDate" type="date" required></label>
+          <label>تاريخ التنفيذ<input name="executeDate" type="date" required></label>
+          <label>حالة الأمر<select name="status"><option>جديد</option><option>جاري التنفيذ</option><option>مكتمل</option></select></label>
+          <label>رفع صور التنفيذ<input name="images" type="file" accept="image/*" multiple></label>
+          <label>رفع ملف PDF لمخطط أمر العمل<input name="pdf" type="file" accept="application/pdf"></label>
+          <label class="wide">ملاحظات التنفيذ<textarea name="notes" rows="4" placeholder="اكتب ملاحظات التنفيذ..."></textarea></label>
+          <button>حفظ أمر الإنشاءات</button>
+        </form>
+        <div class="tools"><input id="constructionSearch" placeholder="البحث برقم الأمر"><input id="constructionDate" type="date"><button data-clear="construction">مسح الفلتر</button></div>
+        <div class="table-wrap"><table><thead><tr><th>رقم الأمر</th><th>النوع</th><th>الاستلام</th><th>التنفيذ</th><th>الحالة</th><th>PDF</th><th>الصور</th><th>إجراءات</th></tr></thead><tbody id="constructionTable"></tbody></table></div>
+      </div>
 
-        <div class="permissions-grid">
-          <span>لوحة التحكم</span><span>التخطيط والإنشاءات</span><span>الصيانة</span><span>المشاريع</span><span>الأرشيف</span><span>المكتب الفني</span>
-        </div>
-      </section>
+      <div id="maintenanceTab" class="tab-panel">
+        <form class="work-form" id="maintenanceForm">
+          <h3>إضافة أمر عمل صيانة</h3>
+          <label>رقم أمر الصيانة<input name="number" placeholder="MNT-2026-001" required></label>
+          <label>نوع أمر العمل<input name="type" placeholder="صيانة وقائية / طارئة" required></label>
+          <label>تاريخ الاستلام من الكهرباء<input name="receiveDate" type="date" required></label>
+          <label>تاريخ التنفيذ<input name="executeDate" type="date" required></label>
+          <label>حالة الأمر<select name="status"><option>جديد</option><option>جاري التنفيذ</option><option>مكتمل</option></select></label>
+          <label>صور التنفيذ<input name="images" type="file" accept="image/*" multiple></label>
+          <label>ملف PDF للمخطط أو المستند<input name="pdf" type="file" accept="application/pdf"></label>
+          <label class="wide">تقرير الصيانة<textarea name="notes" rows="4" placeholder="اكتب تقرير الصيانة..."></textarea></label>
+          <button>حفظ أمر الصيانة</button>
+        </form>
+        <div class="tools"><input id="maintenanceSearch" placeholder="البحث برقم الأمر"><input id="maintenanceDate" type="date"><button data-clear="maintenance">مسح الفلتر</button></div>
+        <div class="table-wrap"><table><thead><tr><th>رقم الأمر</th><th>النوع</th><th>الاستلام</th><th>التنفيذ</th><th>الحالة</th><th>PDF</th><th>الصور</th><th>إجراءات</th></tr></thead><tbody id="maintenanceTable"></tbody></table></div>
+      </div>
+    </section>
 
-      <section class="section-panel protected-section" id="planning-construction" data-section="planning">
-        <div class="panel-header">
-          <div>
-            <p class="eyebrow">قسم التخطيط والإنشاءات</p>
-            <h2>أوامر عمل الإنشاءات والصيانة</h2>
-            <p class="subtitle">يتطلب هذا القسم اسم مستخدم وكلمة مرور، ويمكن تغيير كلمة المرور من لوحة الدخول الخاصة بالقسم.</p>
-          </div>
-          <span class="access-badge" id="planningStatus">مغلق</span>
-        </div>
+    <section class="panel" id="projects">
+      <div class="panel-head"><div><p class="eyebrow">3) قسم المشاريع</p><h2>المشاريع اليومية وتقارير الأعمال</h2></div><span class="pill">تقرير لكل يوم</span></div>
+      <form id="projectForm" class="work-form">
+        <h3>إضافة مشروع / أمر عمل مشروع</h3>
+        <label>رقم أمر المشروع<input name="number" placeholder="PRJ-2026-001" required></label>
+        <label>نوع أمر عمل المشروع<input name="type" placeholder="تغذية موقع / توسعة شبكة" required></label>
+        <label>اسم المشروع<input name="name" placeholder="اسم المشروع" required></label>
+        <label>تاريخ بداية المشروع<input name="startDate" type="date" required></label>
+        <label>حالة المشروع<select name="status"><option>جديد</option><option>جاري التنفيذ</option><option>مكتمل</option></select></label>
+        <label>تاريخ اليوم<input name="dayDate" type="date" required></label>
+        <label>صور أعمال اليوم<input name="images" type="file" accept="image/*" multiple></label>
+        <label>نسبة الإنجاز<input name="progress" type="number" min="0" max="100" placeholder="0 - 100" required></label>
+        <label class="wide">تقرير مفصل للأعمال المنفذة<textarea name="report" rows="5" placeholder="مثال: تم تنفيذ تمديد الكابلات من النقطة A إلى النقطة B وتركيب عدد 5 قواعد..." required></textarea></label>
+        <label class="wide">ملاحظات<textarea name="notes" rows="3" placeholder="أي ملاحظات إضافية"></textarea></label>
+        <button>حفظ تقرير المشروع</button>
+      </form>
+      <div class="report-list" id="projectReports"></div>
+    </section>
 
-        <div class="section-login" id="planningLoginPanel">
-          <form class="auth-card compact" id="planningLoginForm">
-            <h3>دخول التخطيط والإنشاءات</h3>
-            <label>اسم المستخدم<input type="text" id="planningUsername" autocomplete="username" required></label>
-            <label>كلمة المرور<input type="password" id="planningPassword" autocomplete="current-password" required></label>
-            <button class="primary-button" type="submit">فتح القسم</button>
-            <p class="form-message" id="planningLoginMessage">البيانات الافتراضية: planning / 123456</p>
-          </form>
-          <form class="auth-card compact" id="planningCredentialsForm">
-            <h3>تغيير كلمة مرور القسم</h3>
-            <label>اسم المستخدم الجديد<input type="text" id="planningNewUsername" required></label>
-            <label>كلمة المرور الجديدة<input type="password" id="planningNewPassword" minlength="4" required></label>
-            <button class="ghost-button" type="submit">تحديث بيانات الدخول</button>
-            <p class="form-message" id="planningCredentialsMessage">التحديث يحفظ محلياً في المتصفح.</p>
-          </form>
-        </div>
+    <section class="panel" id="users">
+      <div class="panel-head"><div><p class="eyebrow">نظام المستخدمين والصلاحيات</p><h2>إضافة مستخدمين والتحكم بالصلاحيات</h2></div><span class="pill success">تحكم المدير</span></div>
+      <form id="userForm" class="work-form">
+        <h3>إضافة مستخدم</h3>
+        <label>اسم المستخدم<input name="username" required></label>
+        <label>كلمة مرور قابلة للتغيير<input name="password" type="password" required></label>
+        <label>نوع المستخدم<select name="role"><option>مستخدم قسم التخطيط والإنشاءات</option><option>مستخدم قسم المشاريع</option><option>صلاحية كاملة لكل النظام</option></select></label>
+        <label class="checks wide">صلاحية الدخول
+          <span><input type="checkbox" name="perm" value="الإنشاءات"> الإنشاءات</span>
+          <span><input type="checkbox" name="perm" value="الصيانة"> الصيانة</span>
+          <span><input type="checkbox" name="perm" value="المشاريع"> المشاريع</span>
+          <span><input type="checkbox" name="perm" value="كل النظام"> كل النظام</span>
+        </label>
+        <button>إضافة المستخدم</button>
+      </form>
+      <div class="table-wrap"><table><thead><tr><th>اسم المستخدم</th><th>الدور</th><th>الصلاحيات</th><th>إجراء</th></tr></thead><tbody id="usersTable"></tbody></table></div>
+    </section>
 
-        <div class="locked-content" id="planningContent" hidden>
-          <div class="forms-grid">
-            <form class="work-form" id="constructionForm">
-              <h3>أوامر عمل الإنشاءات</h3>
-              <label>رقم أمر العمل<input name="workNumber" type="text" placeholder="مثال: CON-2026-001" required></label>
-              <label>نوع أمر العمل<input name="workType" type="text" placeholder="تمديد كابلات / تركيب محول" required></label>
-              <label>تاريخ الاستلام من الكهرباء<input name="receivedDate" type="date" required></label>
-              <label>تاريخ التنفيذ<input name="executionDate" type="date" required></label>
-              <label>صور التنفيذ<input name="executionImages" type="file" accept="image/*" multiple></label>
-              <label>ملف PDF لمخطط أمر العمل<input name="workPdf" type="file" accept="application/pdf"></label>
-              <button class="primary-button" type="submit">إضافة أمر إنشاءات</button>
-            </form>
+    <section class="panel" id="reports">
+      <div class="panel-head"><div><p class="eyebrow">التقارير والصور والملفات</p><h2>متابعة شاملة للملفات المرفوعة</h2></div></div>
+      <div class="files-grid" id="filesGrid"></div>
+    </section>
+  </main>
 
-            <form class="work-form" id="maintenanceForm">
-              <h3>أوامر عمل الصيانة</h3>
-              <label>رقم أمر العمل<input name="workNumber" type="text" placeholder="مثال: MNT-2026-014" required></label>
-              <label>نوع أمر العمل<input name="workType" type="text" placeholder="صيانة طارئة / صيانة وقائية" required></label>
-              <label>تاريخ الاستلام من الكهرباء<input name="receivedDate" type="date" required></label>
-              <label>تاريخ التنفيذ<input name="executionDate" type="date" required></label>
-              <label>صور التنفيذ<input name="executionImages" type="file" accept="image/*" multiple></label>
-              <label>ملف PDF لمخطط أمر العمل<input name="workPdf" type="file" accept="application/pdf"></label>
-              <button class="primary-button" type="submit">إضافة أمر صيانة</button>
-            </form>
-          </div>
-          <div class="table-wrap submitted-list">
-            <h3>آخر أوامر التخطيط والإنشاءات</h3>
-            <table>
-              <thead><tr><th>التصنيف</th><th>رقم الأمر</th><th>النوع</th><th>استلام الكهرباء</th><th>تاريخ التنفيذ</th><th>المرفقات</th></tr></thead>
-              <tbody id="planningOrdersTable"><tr><td colspan="6">لم تتم إضافة أوامر بعد.</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-panel protected-section" id="projects" data-section="projects">
-        <div class="panel-header">
-          <div>
-            <p class="eyebrow">قسم المشاريع</p>
-            <h2>أوامر عمل المشاريع والتقارير اليومية</h2>
-            <p class="subtitle">أضف أمر المشروع، نوعه، صور أعمال اليوم، وتقريراً مفصلاً لكل يوم عمل.</p>
-          </div>
-          <span class="access-badge" id="projectsStatus">مغلق</span>
-        </div>
-
-        <div class="section-login" id="projectsLoginPanel">
-          <form class="auth-card compact" id="projectsLoginForm">
-            <h3>دخول قسم المشاريع</h3>
-            <label>اسم المستخدم<input type="text" id="projectsUsername" autocomplete="username" required></label>
-            <label>كلمة المرور<input type="password" id="projectsPassword" autocomplete="current-password" required></label>
-            <button class="primary-button" type="submit">فتح القسم</button>
-            <p class="form-message" id="projectsLoginMessage">البيانات الافتراضية: projects / 123456</p>
-          </form>
-          <form class="auth-card compact" id="projectsCredentialsForm">
-            <h3>تغيير كلمة مرور المشاريع</h3>
-            <label>اسم المستخدم الجديد<input type="text" id="projectsNewUsername" required></label>
-            <label>كلمة المرور الجديدة<input type="password" id="projectsNewPassword" minlength="4" required></label>
-            <button class="ghost-button" type="submit">تحديث بيانات الدخول</button>
-            <p class="form-message" id="projectsCredentialsMessage">يمكن تغيير كلمة المرور في أي وقت.</p>
-          </form>
-        </div>
-
-        <div class="locked-content" id="projectsContent" hidden>
-          <form class="work-form project-entry" id="projectWorkForm">
-            <h3>إضافة أمر عمل مشروع</h3>
-            <label>رقم أمر المشروع<input name="projectOrderNumber" type="text" placeholder="مثال: PRJ-WO-2026-009" required></label>
-            <label>نوع أمر عمل المشروع<input name="projectWorkType" type="text" placeholder="تغذية موقع / توسعة شبكة" required></label>
-            <label>صور أعمال اليوم<input name="dailyImages" type="file" accept="image/*" multiple></label>
-            <label class="wide-field">تقرير مفصل عن المشروع اليوم<textarea name="dailyReport" rows="6" placeholder="اكتب الأعمال المنفذة، الفرق العاملة، الملاحظات، المعوقات، ونسبة الإنجاز اليومية..." required></textarea></label>
-            <button class="primary-button" type="submit">حفظ تقرير اليوم</button>
-          </form>
-          <div class="report-list" id="projectReportsList">
-            <article class="empty-state">لم تتم إضافة تقارير مشاريع بعد.</article>
-          </div>
-        </div>
-
-      <section class="stats-grid" aria-label="مؤشرات الأقسام الخمسة">
-        <article class="stat-card" data-count="128">
-          <span class="stat-icon">📊</span>
-          <small>لوحة التحكم</small>
-          <strong>128</strong>
-          <p>مؤشر وطلب نشط</p>
-        </article>
-        <article class="stat-card" data-count="342">
-          <span class="stat-icon">🗂️</span>
-          <small>الأرشيف</small>
-          <strong>342</strong>
-          <p>طلب ومشروع محفوظ</p>
-        </article>
-        <article class="stat-card" data-count="56">
-          <span class="stat-icon">🧭</span>
-          <small>المكتب الفني</small>
-          <strong>56</strong>
-          <p>مخطط قيد المراجعة</p>
-        </article>
-        <article class="stat-card" data-count="74">
-          <span class="stat-icon">🧾</span>
-          <small>أوامر العمل</small>
-          <strong>74</strong>
-          <p>أمر عمل مفتوح</p>
-        </article>
-        <article class="stat-card" data-count="18">
-          <span class="stat-icon">🏗️</span>
-          <small>المشاريع</small>
-          <strong>18</strong>
-          <p>مشروع تحت التنفيذ</p>
-        </article>
- main
-      </section>
-
-      <section class="workspace-grid">
-        <div class="section-panel" id="archive">
-          <div class="panel-header">
- codex-qp0d9a
-            <div><p class="eyebrow">قسم الأرشيف</p><h2>طلبات أوامر العمل والمشاريع</h2></div>
-
-            <div>
-              <p class="eyebrow">قسم الأرشيف</p>
-              <h2>طلبات أوامر العمل والمشاريع</h2>
-            </div>
- main
-            <input class="search-input" id="archiveSearch" type="search" placeholder="ابحث برقم الطلب أو المنطقة...">
-          </div>
-          <div class="table-wrap">
-            <table>
- codex-qp0d9a
-              <thead><tr><th>رقم الطلب</th><th>القسم</th><th>المنطقة</th><th>الحالة</th><th>المسؤول</th></tr></thead>
-              <tbody id="archiveTable">
-                <tr><td>CON-1042</td><td>إنشاءات</td><td>الرياض</td><td><span class="badge in-review">قيد المراجعة</span></td><td>مدير المشروع</td></tr>
-                <tr><td>MNT-221</td><td>صيانة</td><td>جدة</td><td><span class="badge approved">معتمد</span></td><td>التخطيط</td></tr>
-                <tr><td>PRJ-1037</td><td>مشروع</td><td>الدمام</td><td><span class="badge delayed">متأخر</span></td><td>المشاريع</td></tr>
-                <tr><td>PDF-214</td><td>مخطط</td><td>مكة</td><td><span class="badge archived">مؤرشف</span></td><td>المكتب الفني</td></tr>
-
-              <thead>
-                <tr>
-                  <th>رقم الطلب</th>
-                  <th>القسم</th>
-                  <th>المنطقة</th>
-                  <th>الحالة</th>
-                  <th>المسؤول</th>
-                </tr>
-              </thead>
-              <tbody id="archiveTable">
-                <tr><td>WO-1042</td><td>أمر عمل</td><td>الرياض</td><td><span class="badge in-review">قيد المراجعة</span></td><td>مدخل بيانات 1</td></tr>
-                <tr><td>PR-221</td><td>مشروع</td><td>جدة</td><td><span class="badge approved">معتمد</span></td><td>مدير المشروع</td></tr>
-                <tr><td>WO-1037</td><td>أمر عمل</td><td>الدمام</td><td><span class="badge delayed">متأخر</span></td><td>مهندس الكهرباء</td></tr>
-                <tr><td>PR-214</td><td>مشروع</td><td>مكة</td><td><span class="badge archived">مؤرشف</span></td><td>الأرشيف</td></tr>
- main
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="section-panel" id="technical-office">
-          <div class="panel-header">
- codex-qp0d9a
-            <div><p class="eyebrow">قسم المكتب الفني</p><h2>المخططات الكهربائية</h2></div>
-            <button class="ghost-button" type="button">رفع مخطط</button>
-          </div>
-          <div class="drawing-list">
-            <article><span>SLD-05</span><strong>مخطط أحادي الخط - محطة فرعية</strong><small>الإصدار 3 · بانتظار الاعتماد</small></article>
-            <article><span>CAB-12</span><strong>مسار كابلات الجهد المتوسط</strong><small>الإصدار 1 · تمت المراجعة</small></article>
-            <article><span>LOAD-09</span><strong>حساب الأحمال الكهربائية</strong><small>الإصدار 2 · يحتاج تعديل</small></article>
-          </div>
-        </div>
-      </section>
-
-            <div>
-              <p class="eyebrow">قسم المكتب الفني</p>
-              <h2>المخططات الكهربائية</h2>
-            </div>
-            <button class="ghost-button" type="button">رفع مخطط</button>
-          </div>
-          <div class="drawing-list">
-            <article>
-              <span>SLD-05</span>
-              <strong>مخطط أحادي الخط - محطة فرعية</strong>
-              <small>الإصدار 3 · بانتظار الاعتماد</small>
-            </article>
-            <article>
-              <span>CAB-12</span>
-              <strong>مسار كابلات الجهد المتوسط</strong>
-              <small>الإصدار 1 · تمت المراجعة</small>
-            </article>
-            <article>
-              <span>LOAD-09</span>
-              <strong>حساب الأحمال الكهربائية</strong>
-              <small>الإصدار 2 · يحتاج تعديل</small>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="cards-grid">
-        <article class="section-panel" id="work-orders">
-          <p class="eyebrow">إدارة أوامر العمل</p>
-          <h2>توزيع الحالات</h2>
-          <div class="progress-row"><span>جديد</span><div><i style="width:42%"></i></div><b>31</b></div>
-          <div class="progress-row"><span>قيد التنفيذ</span><div><i style="width:76%"></i></div><b>56</b></div>
-          <div class="progress-row"><span>مكتمل</span><div><i style="width:58%"></i></div><b>43</b></div>
-        </article>
-
-        <article class="section-panel" id="projects">
-          <p class="eyebrow">إدارة المشاريع</p>
-          <h2>مشاريع ذات أولوية</h2>
-          <div class="project-card"><strong>توسعة شبكة شمال الرياض</strong><span>82%</span></div>
-          <div class="project-card"><strong>تغذية مخطط سكني جديد</strong><span>64%</span></div>
-          <div class="project-card"><strong>تحسين موثوقية مغذيات جدة</strong><span>91%</span></div>
-        </article>
-
-        <article class="section-panel">
-          <p class="eyebrow">الصلاحيات</p>
-          <h2>وصول المستخدمين</h2>
-          <div class="role-chip">مدير المشروع: جميع الأقسام</div>
-          <div class="role-chip">مهندس الكهرباء: الأرشيف والمكتب الفني</div>
-          <div class="role-chip">مدخل البيانات: إدخال وتحديث الطلبات</div>
-        </article>
-      </section>
- main
-    </main>
-  </div>
-
+  <dialog id="detailsDialog"><div id="detailsBody"></div><button onclick="detailsDialog.close()">إغلاق</button></dialog>
   <script src="script.js"></script>
 </body>
 </html>

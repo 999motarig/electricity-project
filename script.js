@@ -1,176 +1,180 @@
- codex-qp0d9a
-const defaultCredentials = {
+const state = JSON.parse(localStorage.getItem('electricityContractSystem')) || {
   manager: { username: 'manager', password: '123456' },
-  planning: { username: 'planning', password: '123456' },
-  projects: { username: 'projects', password: '123456' },
+  construction: [],
+  maintenance: [],
+  projects: [],
+  users: [
+    { username: 'planning', password: '123456', role: 'مستخدم قسم التخطيط والإنشاءات', perms: ['الإنشاءات', 'الصيانة', 'المشاريع'] },
+    { username: 'projects', password: '123456', role: 'مستخدم قسم المشاريع', perms: ['المشاريع'] },
+    { username: 'admin', password: '123456', role: 'صلاحية كاملة لكل النظام', perms: ['كل النظام'] },
+  ],
 };
 
-=======
- main
-const themeToggle = document.querySelector('#themeToggle');
-const navLinks = document.querySelectorAll('.nav-link');
-const archiveSearch = document.querySelector('#archiveSearch');
-const archiveRows = document.querySelectorAll('#archiveTable tr');
- codex-qp0d9a
-const planningOrders = [];
-const projectReports = [];
+const save = () => localStorage.setItem('electricityContractSystem', JSON.stringify(state));
+const $ = (selector) => document.querySelector(selector);
+const fileNames = (input) => [...input.files].map((file) => file.name);
+const statusClass = (status) => status === 'مكتمل' ? 'done' : status === 'جاري التنفيذ' ? '' : 'late';
 
-function getCredentials(section) {
-  const saved = localStorage.getItem(`${section}Credentials`);
-  return saved ? JSON.parse(saved) : defaultCredentials[section];
-}
+document.querySelectorAll('nav a').forEach((link) => link.addEventListener('click', () => {
+  document.querySelectorAll('nav a').forEach((item) => item.classList.remove('active'));
+  link.classList.add('active');
+}));
 
-function saveCredentials(section, username, password) {
-  localStorage.setItem(`${section}Credentials`, JSON.stringify({ username, password }));
-}
+$('#themeToggle').addEventListener('click', () => document.body.classList.toggle('dark'));
 
-function setMessage(elementId, text, type = '') {
-  const element = document.querySelector(`#${elementId}`);
-  element.textContent = text;
-  element.className = `form-message ${type}`.trim();
-}
-
-function openProtectedSection(section) {
-  const content = document.querySelector(`#${section}Content`);
-  const status = document.querySelector(`#${section}Status`);
-  content.hidden = false;
-  status.textContent = 'مفتوح';
-  status.classList.add('open');
-}
-
-function validateLogin(section, username, password) {
-  const credentials = getCredentials(section);
-  return username === credentials.username && password === credentials.password;
-}
-
- main
-
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-});
-
-navLinks.forEach((link) => {
-  link.addEventListener('click', () => {
-    navLinks.forEach((item) => item.classList.remove('active'));
-    link.classList.add('active');
-  });
-});
-
-archiveSearch.addEventListener('input', (event) => {
-  const term = event.target.value.trim().toLowerCase();
-  archiveRows.forEach((row) => {
-    row.style.display = row.textContent.toLowerCase().includes(term) ? '' : 'none';
-  });
-});
- codex-qp0d9a
-
-document.querySelector('#managerLoginForm').addEventListener('submit', (event) => {
+$('#managerForm').addEventListener('submit', (event) => {
   event.preventDefault();
-  const username = document.querySelector('#managerUsername').value.trim();
-  const password = document.querySelector('#managerPassword').value;
-
-  if (validateLogin('manager', username, password)) {
-    openProtectedSection('planning');
-    openProtectedSection('projects');
-    setMessage('managerLoginMessage', 'تم تسجيل دخول مدير المشروع وفتح جميع الأقسام.', 'success');
-    return;
-  }
-
-  setMessage('managerLoginMessage', 'اسم المستخدم أو كلمة السر غير صحيحة.', 'error');
+  state.manager.username = $('#managerUsername').value.trim();
+  state.manager.password = $('#managerPassword').value;
+  $('#activeUser').textContent = state.manager.username;
+  $('#managerMessage').textContent = 'تم حفظ بيانات مدير المشروع وتحديث كلمة المرور.';
+  $('#managerMessage').classList.add('success-text');
+  save();
 });
 
-document.querySelector('#managerCredentialsForm').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const username = document.querySelector('#managerNewUsername').value.trim();
-  const password = document.querySelector('#managerNewPassword').value;
-  saveCredentials('manager', username, password);
-  setMessage('managerCredentialsMessage', 'تم تحديث بيانات مدير المشروع بنجاح.', 'success');
-  event.target.reset();
-});
+document.querySelectorAll('.tab').forEach((tab) => tab.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach((item) => item.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach((panel) => panel.classList.remove('active'));
+  tab.classList.add('active');
+  $(`#${tab.dataset.tab}`).classList.add('active');
+}));
 
-['planning', 'projects'].forEach((section) => {
-  document.querySelector(`#${section}LoginForm`).addEventListener('submit', (event) => {
-    event.preventDefault();
-    const username = document.querySelector(`#${section}Username`).value.trim();
-    const password = document.querySelector(`#${section}Password`).value;
-
-    if (validateLogin(section, username, password)) {
-      openProtectedSection(section);
-      setMessage(`${section}LoginMessage`, 'تم فتح القسم بنجاح.', 'success');
-      return;
-    }
-
-    setMessage(`${section}LoginMessage`, 'بيانات الدخول غير صحيحة.', 'error');
-  });
-
-  document.querySelector(`#${section}CredentialsForm`).addEventListener('submit', (event) => {
-    event.preventDefault();
-    const username = document.querySelector(`#${section}NewUsername`).value.trim();
-    const password = document.querySelector(`#${section}NewPassword`).value;
-    saveCredentials(section, username, password);
-    setMessage(`${section}CredentialsMessage`, 'تم تحديث اسم المستخدم وكلمة المرور.', 'success');
-    event.target.reset();
-  });
-});
-
-function fileSummary(fileInput) {
-  if (!fileInput.files.length) return 'لا يوجد';
-  return `${fileInput.files.length} ملف`;
-}
-
-function renderPlanningOrders() {
-  const table = document.querySelector('#planningOrdersTable');
-  table.innerHTML = planningOrders.map((order) => `
-    <tr>
-      <td>${order.category}</td>
-      <td>${order.workNumber}</td>
-      <td>${order.workType}</td>
-      <td>${order.receivedDate}</td>
-      <td>${order.executionDate}</td>
-      <td>${order.attachments}</td>
-    </tr>
-  `).join('');
-}
-
-function handleWorkOrderSubmit(event, category) {
-  event.preventDefault();
-  const form = event.target;
+function collectWorkOrder(form, category) {
   const data = new FormData(form);
-  planningOrders.unshift({
+  return {
+    id: crypto.randomUUID(),
     category,
-    workNumber: data.get('workNumber'),
-    workType: data.get('workType'),
-    receivedDate: data.get('receivedDate'),
-    executionDate: data.get('executionDate'),
-    attachments: `${fileSummary(form.elements.executionImages)} صور / ${fileSummary(form.elements.workPdf)} PDF`,
-  });
-  renderPlanningOrders();
-  form.reset();
+    number: data.get('number'),
+    type: data.get('type'),
+    receiveDate: data.get('receiveDate'),
+    executeDate: data.get('executeDate'),
+    status: data.get('status'),
+    images: fileNames(form.elements.images),
+    pdf: fileNames(form.elements.pdf)[0] || '',
+    notes: data.get('notes') || '',
+  };
 }
 
-document.querySelector('#constructionForm').addEventListener('submit', (event) => handleWorkOrderSubmit(event, 'إنشاءات'));
-document.querySelector('#maintenanceForm').addEventListener('submit', (event) => handleWorkOrderSubmit(event, 'صيانة'));
-
-document.querySelector('#projectWorkForm').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const form = event.target;
-  const data = new FormData(form);
-  projectReports.unshift({
-    number: data.get('projectOrderNumber'),
-    type: data.get('projectWorkType'),
-    images: fileSummary(form.elements.dailyImages),
-    report: data.get('dailyReport'),
-    date: new Date().toLocaleDateString('ar-SA'),
+function bindWorkForm(formId, collection) {
+  $(formId).addEventListener('submit', (event) => {
+    event.preventDefault();
+    state[collection].unshift(collectWorkOrder(event.target, collection === 'construction' ? 'إنشاءات' : 'صيانة'));
+    event.target.reset();
+    save();
+    renderAll();
   });
+}
 
-  const list = document.querySelector('#projectReportsList');
-  list.innerHTML = projectReports.map((report) => `
-    <article>
-      <strong>${report.number} · ${report.type}</strong>
-      <small>${report.date} · صور أعمال اليوم: ${report.images}</small>
-      <p>${report.report}</p>
-    </article>
-  `).join('');
-  form.reset();
+bindWorkForm('#constructionForm', 'construction');
+bindWorkForm('#maintenanceForm', 'maintenance');
+
+function renderWorkOrders(collection) {
+  const search = $(`#${collection}Search`).value.trim();
+  const date = $(`#${collection}Date`).value;
+  const rows = state[collection]
+    .filter((item) => !search || item.number.includes(search))
+    .filter((item) => !date || item.receiveDate === date || item.executeDate === date)
+    .map((item) => `<tr>
+      <td>${item.number}</td><td>${item.type}</td><td>${item.receiveDate}</td><td>${item.executeDate}</td>
+      <td><span class="status ${statusClass(item.status)}">${item.status}</span></td>
+      <td>${item.pdf ? `<button data-action="pdf" data-id="${item.id}" data-col="${collection}">فتح PDF</button>` : 'لا يوجد'}</td>
+      <td>${item.images.length ? `<button data-action="images" data-id="${item.id}" data-col="${collection}">مشاهدة الصور (${item.images.length})</button>` : 'لا يوجد'}</td>
+      <td><button data-action="edit" data-id="${item.id}" data-col="${collection}">تعديل</button> <button data-action="delete" data-id="${item.id}" data-col="${collection}">حذف</button></td>
+    </tr>`).join('');
+  $(`#${collection}Table`).innerHTML = rows || '<tr><td colspan="8">لا توجد أوامر مطابقة.</td></tr>';
+}
+
+['constructionSearch', 'constructionDate', 'maintenanceSearch', 'maintenanceDate'].forEach((id) => {
+  $(`#${id}`).addEventListener('input', renderAll);
 });
-main
+
+document.querySelectorAll('[data-clear]').forEach((button) => button.addEventListener('click', () => {
+  const collection = button.dataset.clear;
+  $(`#${collection}Search`).value = '';
+  $(`#${collection}Date`).value = '';
+  renderAll();
+}));
+
+$('#projectForm').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = new FormData(event.target);
+  state.projects.unshift({
+    id: crypto.randomUUID(),
+    number: data.get('number'),
+    type: data.get('type'),
+    name: data.get('name'),
+    startDate: data.get('startDate'),
+    status: data.get('status'),
+    dayDate: data.get('dayDate'),
+    images: fileNames(event.target.elements.images),
+    progress: data.get('progress'),
+    report: data.get('report'),
+    notes: data.get('notes'),
+  });
+  event.target.reset();
+  save();
+  renderAll();
+});
+
+$('#userForm').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = new FormData(event.target);
+  state.users.unshift({ username: data.get('username'), password: data.get('password'), role: data.get('role'), perms: data.getAll('perm') });
+  event.target.reset();
+  save();
+  renderAll();
+});
+
+function showDetails(title, content) {
+  $('#detailsBody').innerHTML = `<h3>${title}</h3>${content}`;
+  $('#detailsDialog').showModal();
+}
+
+document.addEventListener('click', (event) => {
+  const actionButton = event.target.closest('[data-action]');
+  if (!actionButton) return;
+  const collection = actionButton.dataset.col;
+  const item = state[collection].find((entry) => entry.id === actionButton.dataset.id);
+  if (actionButton.dataset.action === 'delete') {
+    state[collection] = state[collection].filter((entry) => entry.id !== item.id);
+    save(); renderAll(); return;
+  }
+  if (actionButton.dataset.action === 'pdf') showDetails('ملف PDF', `<p>${item.pdf}</p><p>في النسخة النهائية يفتح الملف من الخادم.</p>`);
+  if (actionButton.dataset.action === 'images') showDetails('صور التنفيذ', `<ul>${item.images.map((name) => `<li>${name}</li>`).join('')}</ul>`);
+  if (actionButton.dataset.action === 'edit') showDetails('تعديل الأمر', `<p>يمكن للمدير تعديل السجل من قاعدة البيانات في النسخة المتكاملة.</p><pre>${JSON.stringify(item, null, 2)}</pre>`);
+});
+
+function renderProjects() {
+  $('#projectReports').innerHTML = state.projects.map((project) => `<article class="report">
+    <h3>${project.name} - ${project.number}</h3>
+    <p><strong>${project.type}</strong> · ${project.dayDate} · <span class="status ${statusClass(project.status)}">${project.status}</span></p>
+    <progress value="${project.progress}" max="100"></progress><small>${project.progress}%</small>
+    <p>${project.report}</p><small>ملاحظات: ${project.notes || 'لا يوجد'} · صور اليوم: ${project.images.length}</small>
+  </article>`).join('') || '<article class="report">لا توجد تقارير مشاريع بعد.</article>';
+}
+
+function renderUsers() {
+  $('#usersTable').innerHTML = state.users.map((user, index) => `<tr><td>${user.username}</td><td>${user.role}</td><td>${user.perms.join('، ') || 'بدون'}</td><td><button onclick="state.users.splice(${index},1);save();renderAll();">حذف</button></td></tr>`).join('');
+}
+
+function renderFiles() {
+  const orders = [...state.construction, ...state.maintenance];
+  const files = orders.flatMap((order) => [
+    ...order.images.map((name) => ({ type: 'صورة', name, order: order.number })),
+    ...(order.pdf ? [{ type: 'PDF', name: order.pdf, order: order.number }] : []),
+  ]);
+  $('#filesGrid').innerHTML = files.map((file) => `<article class="file-card"><strong>${file.type}</strong><p>${file.name}</p><small>مرتبط بالأمر: ${file.order}</small></article>`).join('') || '<article class="file-card">لا توجد ملفات مرفوعة بعد.</article>';
+}
+
+function renderAll() {
+  $('#constructionCount').textContent = state.construction.length;
+  $('#maintenanceCount').textContent = state.maintenance.length;
+  $('#projectCount').textContent = state.projects.length;
+  renderWorkOrders('construction');
+  renderWorkOrders('maintenance');
+  renderProjects();
+  renderUsers();
+  renderFiles();
+}
+
+renderAll();
