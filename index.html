@@ -22,11 +22,18 @@
 
       <nav class="nav-list">
         <a class="nav-link active" href="#dashboard">لوحة التحكم</a>
+ codex-qp0d9a
         <a class="nav-link" href="#project-manager">مدير المشروع</a>
         <a class="nav-link" href="#planning-construction">التخطيط والإنشاءات</a>
         <a class="nav-link" href="#projects">المشاريع</a>
         <a class="nav-link" href="#archive">الأرشيف</a>
         <a class="nav-link" href="#technical-office">المكتب الفني</a>
+
+        <a class="nav-link" href="#archive">الأرشيف</a>
+        <a class="nav-link" href="#technical-office">المكتب الفني</a>
+        <a class="nav-link" href="#work-orders">أوامر العمل</a>
+        <a class="nav-link" href="#projects">المشاريع</a>
+ main
       </nav>
 
       <div class="sidebar-card">
@@ -41,11 +48,19 @@
         <div>
           <p class="eyebrow">لوحة تشغيل مباشرة</p>
           <h1>نظام متابعة مشروع العقد الموحد</h1>
+ codex-qp0d9a
           <p class="subtitle">إدارة صلاحيات مدير المشروع، التخطيط والإنشاءات، أوامر الصيانة، مشاريع التنفيذ اليومية، الأرشيف، والمكتب الفني.</p>
         </div>
         <div class="topbar-actions">
           <button class="ghost-button" id="themeToggle" type="button">تبديل المظهر</button>
           <a class="primary-button" href="#planning-construction">+ أمر عمل جديد</a>
+
+          <p class="subtitle">متابعة مركزية للأرشيف، المكتب الفني، أوامر العمل، المشاريع، ولوحة مؤشرات تنفيذية.</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="ghost-button" id="themeToggle" type="button">تبديل المظهر</button>
+          <button class="primary-button" type="button">+ أمر عمل جديد</button>
+ main
         </div>
       </header>
 
@@ -54,7 +69,11 @@
           <div class="hero-card__content">
             <span class="status-pill">محدث الآن</span>
             <h2>نظرة شاملة على الأداء التشغيلي</h2>
+ codex-qp0d9a
             <p>راقب طلبات التخطيط والإنشاءات والصيانة، المخططات قيد المراجعة، تقارير المشاريع اليومية، وصلاحيات المستخدمين من مكان واحد.</p>
+
+            <p>راقب الطلبات المفتوحة، المخططات قيد المراجعة، المشاريع المتأخرة، وإنتاجية مدخلي البيانات من مكان واحد.</p>
+ main
           </div>
           <div class="hero-meter" aria-label="مؤشر الإنجاز">
             <span>86%</span>
@@ -65,13 +84,20 @@
         <article class="alert-card">
           <h3>تنبيهات مهمة</h3>
           <ul>
+ codex-qp0d9a
             <li>7 أوامر عمل إنشاءات لم تحدث منذ 48 ساعة.</li>
             <li>3 مخططات PDF بانتظار اعتماد المكتب الفني.</li>
             <li>مشروعان يحتاجان تقرير أعمال اليوم.</li>
+
+            <li>7 أوامر عمل لم تحدث منذ 48 ساعة.</li>
+            <li>3 مخططات بانتظار اعتماد مهندس الكهرباء.</li>
+            <li>مشروعان تجاوزا تاريخ التسليم المتوقع.</li>
+ main
           </ul>
         </article>
       </section>
 
+ codex-qp0d9a
       <section class="stats-grid" aria-label="مؤشرات الأقسام الرئيسية">
         <article class="stat-card"><span class="stat-icon">👤</span><small>مدير المشروع</small><strong>كامل</strong><p>صلاحية لجميع الأقسام</p></article>
         <article class="stat-card"><span class="stat-icon">🏗️</span><small>التخطيط والإنشاءات</small><strong>42</strong><p>أمر إنشاءات نشط</p></article>
@@ -214,22 +240,79 @@
             <article class="empty-state">لم تتم إضافة تقارير مشاريع بعد.</article>
           </div>
         </div>
+
+      <section class="stats-grid" aria-label="مؤشرات الأقسام الخمسة">
+        <article class="stat-card" data-count="128">
+          <span class="stat-icon">📊</span>
+          <small>لوحة التحكم</small>
+          <strong>128</strong>
+          <p>مؤشر وطلب نشط</p>
+        </article>
+        <article class="stat-card" data-count="342">
+          <span class="stat-icon">🗂️</span>
+          <small>الأرشيف</small>
+          <strong>342</strong>
+          <p>طلب ومشروع محفوظ</p>
+        </article>
+        <article class="stat-card" data-count="56">
+          <span class="stat-icon">🧭</span>
+          <small>المكتب الفني</small>
+          <strong>56</strong>
+          <p>مخطط قيد المراجعة</p>
+        </article>
+        <article class="stat-card" data-count="74">
+          <span class="stat-icon">🧾</span>
+          <small>أوامر العمل</small>
+          <strong>74</strong>
+          <p>أمر عمل مفتوح</p>
+        </article>
+        <article class="stat-card" data-count="18">
+          <span class="stat-icon">🏗️</span>
+          <small>المشاريع</small>
+          <strong>18</strong>
+          <p>مشروع تحت التنفيذ</p>
+        </article>
+ main
       </section>
 
       <section class="workspace-grid">
         <div class="section-panel" id="archive">
           <div class="panel-header">
+ codex-qp0d9a
             <div><p class="eyebrow">قسم الأرشيف</p><h2>طلبات أوامر العمل والمشاريع</h2></div>
+
+            <div>
+              <p class="eyebrow">قسم الأرشيف</p>
+              <h2>طلبات أوامر العمل والمشاريع</h2>
+            </div>
+ main
             <input class="search-input" id="archiveSearch" type="search" placeholder="ابحث برقم الطلب أو المنطقة...">
           </div>
           <div class="table-wrap">
             <table>
+ codex-qp0d9a
               <thead><tr><th>رقم الطلب</th><th>القسم</th><th>المنطقة</th><th>الحالة</th><th>المسؤول</th></tr></thead>
               <tbody id="archiveTable">
                 <tr><td>CON-1042</td><td>إنشاءات</td><td>الرياض</td><td><span class="badge in-review">قيد المراجعة</span></td><td>مدير المشروع</td></tr>
                 <tr><td>MNT-221</td><td>صيانة</td><td>جدة</td><td><span class="badge approved">معتمد</span></td><td>التخطيط</td></tr>
                 <tr><td>PRJ-1037</td><td>مشروع</td><td>الدمام</td><td><span class="badge delayed">متأخر</span></td><td>المشاريع</td></tr>
                 <tr><td>PDF-214</td><td>مخطط</td><td>مكة</td><td><span class="badge archived">مؤرشف</span></td><td>المكتب الفني</td></tr>
+
+              <thead>
+                <tr>
+                  <th>رقم الطلب</th>
+                  <th>القسم</th>
+                  <th>المنطقة</th>
+                  <th>الحالة</th>
+                  <th>المسؤول</th>
+                </tr>
+              </thead>
+              <tbody id="archiveTable">
+                <tr><td>WO-1042</td><td>أمر عمل</td><td>الرياض</td><td><span class="badge in-review">قيد المراجعة</span></td><td>مدخل بيانات 1</td></tr>
+                <tr><td>PR-221</td><td>مشروع</td><td>جدة</td><td><span class="badge approved">معتمد</span></td><td>مدير المشروع</td></tr>
+                <tr><td>WO-1037</td><td>أمر عمل</td><td>الدمام</td><td><span class="badge delayed">متأخر</span></td><td>مهندس الكهرباء</td></tr>
+                <tr><td>PR-214</td><td>مشروع</td><td>مكة</td><td><span class="badge archived">مؤرشف</span></td><td>الأرشيف</td></tr>
+ main
               </tbody>
             </table>
           </div>
@@ -237,6 +320,7 @@
 
         <div class="section-panel" id="technical-office">
           <div class="panel-header">
+ codex-qp0d9a
             <div><p class="eyebrow">قسم المكتب الفني</p><h2>المخططات الكهربائية</h2></div>
             <button class="ghost-button" type="button">رفع مخطط</button>
           </div>
@@ -247,6 +331,59 @@
           </div>
         </div>
       </section>
+
+            <div>
+              <p class="eyebrow">قسم المكتب الفني</p>
+              <h2>المخططات الكهربائية</h2>
+            </div>
+            <button class="ghost-button" type="button">رفع مخطط</button>
+          </div>
+          <div class="drawing-list">
+            <article>
+              <span>SLD-05</span>
+              <strong>مخطط أحادي الخط - محطة فرعية</strong>
+              <small>الإصدار 3 · بانتظار الاعتماد</small>
+            </article>
+            <article>
+              <span>CAB-12</span>
+              <strong>مسار كابلات الجهد المتوسط</strong>
+              <small>الإصدار 1 · تمت المراجعة</small>
+            </article>
+            <article>
+              <span>LOAD-09</span>
+              <strong>حساب الأحمال الكهربائية</strong>
+              <small>الإصدار 2 · يحتاج تعديل</small>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cards-grid">
+        <article class="section-panel" id="work-orders">
+          <p class="eyebrow">إدارة أوامر العمل</p>
+          <h2>توزيع الحالات</h2>
+          <div class="progress-row"><span>جديد</span><div><i style="width:42%"></i></div><b>31</b></div>
+          <div class="progress-row"><span>قيد التنفيذ</span><div><i style="width:76%"></i></div><b>56</b></div>
+          <div class="progress-row"><span>مكتمل</span><div><i style="width:58%"></i></div><b>43</b></div>
+        </article>
+
+        <article class="section-panel" id="projects">
+          <p class="eyebrow">إدارة المشاريع</p>
+          <h2>مشاريع ذات أولوية</h2>
+          <div class="project-card"><strong>توسعة شبكة شمال الرياض</strong><span>82%</span></div>
+          <div class="project-card"><strong>تغذية مخطط سكني جديد</strong><span>64%</span></div>
+          <div class="project-card"><strong>تحسين موثوقية مغذيات جدة</strong><span>91%</span></div>
+        </article>
+
+        <article class="section-panel">
+          <p class="eyebrow">الصلاحيات</p>
+          <h2>وصول المستخدمين</h2>
+          <div class="role-chip">مدير المشروع: جميع الأقسام</div>
+          <div class="role-chip">مهندس الكهرباء: الأرشيف والمكتب الفني</div>
+          <div class="role-chip">مدخل البيانات: إدخال وتحديث الطلبات</div>
+        </article>
+      </section>
+ main
     </main>
   </div>
 

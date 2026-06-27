@@ -1,13 +1,17 @@
+ codex-qp0d9a
 const defaultCredentials = {
   manager: { username: 'manager', password: '123456' },
   planning: { username: 'planning', password: '123456' },
   projects: { username: 'projects', password: '123456' },
 };
 
+=======
+ main
 const themeToggle = document.querySelector('#themeToggle');
 const navLinks = document.querySelectorAll('.nav-link');
 const archiveSearch = document.querySelector('#archiveSearch');
 const archiveRows = document.querySelectorAll('#archiveTable tr');
+ codex-qp0d9a
 const planningOrders = [];
 const projectReports = [];
 
@@ -39,6 +43,8 @@ function validateLogin(section, username, password) {
   return username === credentials.username && password === credentials.password;
 }
 
+ main
+
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark');
 });
@@ -56,6 +62,7 @@ archiveSearch.addEventListener('input', (event) => {
     row.style.display = row.textContent.toLowerCase().includes(term) ? '' : 'none';
   });
 });
+ codex-qp0d9a
 
 document.querySelector('#managerLoginForm').addEventListener('submit', (event) => {
   event.preventDefault();
@@ -166,3 +173,4 @@ document.querySelector('#projectWorkForm').addEventListener('submit', (event) =>
   `).join('');
   form.reset();
 });
+main
